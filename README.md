@@ -1,4 +1,4 @@
-# <img src="public/icons/icon_48.png" width="45" align="left"> Fumotoppara
+# <img src="public/icons/icon_48.png" width="45" align="left"> ふもとっぱら予約
 
 ふもとっぱら予約 Chrome 拡張機能
 
