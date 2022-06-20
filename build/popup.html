@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>My Chrome Extension</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <div class="body">
+      <div class="button">
+        <input
+          id="set_reserve"
+          type="button"
+          name="j_id0:j_id19:j_id59"
+          value="クリックで予約画面&#13;&#10;に反映する"
+          class="submitbutton"
+        />
+      </div>
+      <br />
+      <br />
+      <span class="emphasis">＊</span>印がある欄は必須項目です。<br />
+
+      <div class="check_date" style="display: none">
+        <div class="check_date_comment">
+          下記お日にちが予約満員です。別の日を指定してください。
+        </div>
+
+        <table border="0" cellpadding="2" cellspacing="0" dir="ltr">
+          <tbody>
+            <tr style="display: none">
+              <th>キャンプサイト</th>
+              <td><div class="clear"></div></td>
+            </tr>
+
+            <tr style="display: none">
+              <th>コテージ柏</th>
+              <td><div class="clear"></div></td>
+            </tr>
+
+            <tr style="display: none">
+              <th>翠山荘</th>
+              <td><div class="clear"></div></td>
+            </tr>
+
+            <tr style="display: none">
+              <th>毛無山荘</th>
+              <td><div class="clear"></div></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <form
+        id="j_id0:j_id19"
+        name="j_id0:j_id19"
+        method="post"
+        action="/RS_reservation1"
+        enctype="application/x-www-form-urlencoded"
+      >
+        <input type="hidden" name="j_id0:j_id19" value="j_id0:j_id19" />
+
+        <h3>基本情報</h3>
+        <table border="0" cellpadding="2" cellspacing="0" dir="ltr">
+          <tbody>
+            <tr>
+              <th>お名前 <span class="emphasis">＊</span></th>
+              <td class="name">
+                <div class="item_name">
+                  <div class="value"></div>
+                  <input
+                    maxlength="80"
+                    name="LastName"
+                    placeholder="姓"
+                    type="text"
+                    value=""
+                  />
+                </div>
+                <div class="item_name">
+                  <div class="value"></div>
+                  <input
+                    maxlength="40"
+                    name="FirstName"
+                    placeholder="名"
+                    type="text"
+                    value=""
+                  />
+                </div>
+                <div class="clear"></div>
+                <div class="warning">必須項目です。</div>
+              </td>
+            </tr>
+
+            <tr>
+              <th>フリガナ <span class="emphasis">＊</span></th>
+              <td class="phonetic">
+                <input maxlength="100" name="phonetic" type="text" value="" />
+                <div class="warning">必須項目です。</div>
+              </td>
+            </tr>
+
+            <tr>
+              <th>電話 <span class="emphasis">＊</span></th>
+              <td class="Phone">
+                <input
+                  maxlength="40"
+                  name="Phone"
+                  placeholder="例：0544-52-2112"
+                  type="tel"
+                  value=""
+                />
+
+                <div class="warning">必須項目です。</div>
+              </td>
+            </tr>
+
+            <tr>
+              <th>
+                予約確認用パスワード<span class="emphasis">＊</span><br /><span
+                  style="font-size: 80%"
+                  >（最大10文字）</span
+                >
+              </th>
+              <td class="Pass">
+                <input
+                  maxlength="10"
+                  name="Password"
+                  placeholder="例：sample1234"
+                  type="text"
+                  value=""
+                />
+                <div
+                  class="example"
+                  style="line-height: 20px; font-weight: bold; color: #000080"
+                >
+                  お客様の予約確認を閲覧する際に必要となります。<br />
+                  電話番号と併せてお控えください。
+                </div>
+                <div class="warning">必須項目です。</div>
+              </td>
+            </tr>
+
+            <tr>
+              <th>メール <span class="emphasis">＊</span></th>
+              <td class="Email">
+                <input
+                  maxlength="80"
+                  name="Email"
+                  placeholder="例：aaa@aaa.aaa.aaa"
+                  type="email"
+                  value=""
+                />
+
+                <div class="warning">必須項目です。</div>
+                <div class="warning">
+                  メールアドレスの桁数が80桁を超えています。
+                </div>
+                <div class="warning">メールアドレスの入力が不正です。</div>
+              </td>
+            </tr>
+
+            <tr>
+              <th>住所 <span class="emphasis">＊</span></th>
+              <td class="Mailing">
+                <div>
+                  〒<input
+                    maxlength="8"
+                    name="MailingPostalcode"
+                    onkeyup="AjaxZip3.zip2addr(this, '', 'MailingState', 'MailingCity', 'MailingStreet');"
+                    placeholder="000-0000"
+                    style="width: 100px"
+                    type="tel"
+                    value=""
+                  />
+                </div>
+
+                <div>
+                  <select name="MailingState" style="width: 160px">
+                    <option value="" selected="">都道府県</option>
+                    <option value="北海道">北海道</option>
+                    <option value="青森県">青森県</option>
+                    <option value="岩手県">岩手県</option>
+                    <option value="宮城県">宮城県</option>
+                    <option value="秋田県">秋田県</option>
+                    <option value="山形県">山形県</option>
+                    <option value="福島県">福島県</option>
+                    <option value="茨城県">茨城県</option>
+                    <option value="栃木県">栃木県</option>
+                    <option value="群馬県">群馬県</option>
+                    <option value="埼玉県">埼玉県</option>
+                    <option value="千葉県">千葉県</option>
+                    <option value="東京都">東京都</option>
+                    <option value="神奈川県">神奈川県</option>
+                    <option value="新潟県">新潟県</option>
+                    <option value="富山県">富山県</option>
+                    <option value="石川県">石川県</option>
+                    <option value="福井県">福井県</option>
+                    <option value="山梨県">山梨県</option>
+                    <option value="長野県">長野県</option>
+                    <option value="岐阜県">岐阜県</option>
+                    <option value="静岡県">静岡県</option>
+                    <option value="愛知県">愛知県</option>
+                    <option value="三重県">三重県</option>
+                    <option value="滋賀県">滋賀県</option>
+                    <option value="京都府">京都府</option>
+                    <option value="大阪府">大阪府</option>
+                    <option value="兵庫県">兵庫県</option>
+                    <option value="奈良県">奈良県</option>
+                    <option value="和歌山県">和歌山県</option>
+                    <option value="鳥取県">鳥取県</option>
+                    <option value="島根県">島根県</option>
+                    <option value="岡山県">岡山県</option>
+                    <option value="広島県">広島県</option>
+                    <option value="山口県">山口県</option>
+                    <option value="徳島県">徳島県</option>
+                    <option value="香川県">香川県</option>
+                    <option value="愛媛県">愛媛県</option>
+                    <option value="高知県">高知県</option>
+                    <option value="福岡県">福岡県</option>
+                    <option value="佐賀県">佐賀県</option>
+                    <option value="長崎県">長崎県</option>
+                    <option value="熊本県">熊本県</option>
+                    <option value="大分県">大分県</option>
+                    <option value="宮崎県">宮崎県</option>
+                    <option value="鹿児島県">鹿児島県</option>
+                    <option value="沖縄県">沖縄県</option>
+                  </select>
+                </div>
+                <div>
+                  <input
+                    maxlength="30"
+                    name="MailingCity"
+                    placeholder="市区群"
+                    style="width: 150px"
+                    type="text"
+                    value=""
+                  />
+                </div>
+                <input
+                  maxlength="150"
+                  name="MailingStreet"
+                  placeholder="町名・番地"
+                  type="text"
+                  value=""
+                />
+
+                <div class="warning">
+                  必須項目です。<br />郵便番号～番地までご記入ください。
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <th>緊急連絡先:　続柄 <span class="emphasis">＊</span></th>
+              <td class="EmeRelationship">
+                　　
+                <div class="item_EmeRelationship1">
+                  <select
+                    name="EmeRelationship1"
+                    onchange="eventEmeRelationship()"
+                  >
+                    <option value="" selected="">-- 選択してください --</option>
+                    <option value="家族">家族</option>
+                    <option value="親戚">親戚</option>
+                    <option value="友人">友人</option>
+                  </select>
+                </div>
+                <div class="item_EmeRelationship2">
+                  <input
+                    maxlength="50"
+                    name="EmeRelationship2"
+                    placeholder="続柄を入力ください。"
+                    type="text"
+                    value=""
+                    style="display: none"
+                  />
+                </div>
+                <div class="clear"></div>
+                <div class="warning">必須項目です。</div>
+                <div class="warning">
+                  その他の場合には、続柄をご記入ください。
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <th>緊急連絡先:　電話 <span class="emphasis">＊</span></th>
+              <td class="EmeTell">
+                <input
+                  maxlength="40"
+                  name="EmeTell"
+                  placeholder="例：0544-52-2112"
+                  type="tel"
+                  value=""
+                />
+
+                <div class="warning">必須項目です。</div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <br />
+        <div id="j_id0:j_id19:j_id64"></div>
+      </form>
+      <span id="ajax-view-state-page-container" style="display: none"
+        ><span id="ajax-view-state" style="display: none"
+          ><input
+            type="hidden"
+            id="com.salesforce.visualforce.ViewState"
+            name="com.salesforce.visualforce.ViewState"
+            value="i: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" /><input
+            type="hidden"
+            id="com.salesforce.visualforce.ViewStateVersion"
+            name="com.salesforce.visualforce.ViewStateVersion"
+            value="202206170242450453" /><input
+            type="hidden"
+            id="com.salesforce.visualforce.ViewStateMAC"
+            name="com.salesforce.visualforce.ViewStateMAC"
+            value="AGV5SnViMjVqWlNJNkltNTVNMEZpUjJKcFVFOXJOMkpDWWxwMVoxTXdURXRpWDIxMlFXRTNhamx2Ym5kSlZHNDJZemhrZFd0Y2RUQXdNMlFpTENKMGVYQWlPaUpLVjFRaUxDSmhiR2NpT2lKSVV6STFOaUlzSW10cFpDSTZJbnRjSW5SY0lqcGNJakF3UkRkR01EQXdNREEwWTFaNGFsd2lMRndpZGx3aU9sd2lNREpITjBZd01EQXdNREF4ZGxacVhDSXNYQ0poWENJNlhDSjJabk5wWjI1cGJtZHJaWGxjSWl4Y0luVmNJanBjSWpBd05UZEdNREF3TURBeVdHcFNkVndpZlNJc0ltTnlhWFFpT2xzaWFXRjBJbDBzSW1saGRDSTZNVFkxTlRjd05qZzJNREkxT1N3aVpYaHdJam93ZlE9PS4udE5qdnU0Y2tXSDZLcnZQX0I3V3RobWZ2eFRuVm5jV1hmd0l4MmtydnJJaz0=" /></span
+      ></span>
+    </div>
+    <script src="popup.js"></script>
+
+    <!--
+    This HTML file opens when you click on icon from the toolbar.
+
+    To begin the development, run `npm run watch`.
+    To create a production bundle, use `npm run build`.
+  --></body>
+</html>
